@@ -7,6 +7,8 @@ const defaultCharacter = {
     desense: 0
 }
 
+//O nome entre parentese determina que já vai exister um nome para o personagem
+//No caso dos monstros, ambos vai vazio e o atributo (name) vai com seus nomes especificos.
 const createKnight = (name) => {
     return {
         ...defaultCharacter,
@@ -26,5 +28,27 @@ const createSorcerer = (name) => {
         maxLife: 50,
         attack: 14,
         desense: 3
+    }
+}
+
+const createLittleMonster = () => {
+    return {
+        ...defaultCharacter,
+        name: "Little Monster",
+        life: 40,
+        maxLife: 40,
+        attack: 4,
+        desense: 4
+    }
+}
+
+const createBigMonster = () => {
+    return {
+        ...defaultCharacter,
+        name: "Big Monster",
+        life: 120,
+        maxLife: 120,
+        attack: 16,
+        desense: 6
     }
 }

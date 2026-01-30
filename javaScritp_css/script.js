@@ -1,4 +1,4 @@
-const char = createSorcerer('Willian');
+const char = createKnight('Willian');
 const monster = createLittleMonster();
 
 stage.start(

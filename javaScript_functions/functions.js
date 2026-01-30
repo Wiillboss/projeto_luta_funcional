@@ -4,7 +4,7 @@ const defaultCharacter = {
     life: 1,
     maxLife: 1,
     attack: 0,
-    desense: 0
+    defense: 0
 }
 
 //O nome entre parentese determina que já vai exister um nome para o personagem
@@ -27,7 +27,7 @@ const createSorcerer = (name) => {
         life: 50,
         maxLife: 50,
         attack: 14,
-        desense: 3
+        defense: 3
     }
 }
 
@@ -38,7 +38,7 @@ const createLittleMonster = () => {
         life: 40,
         maxLife: 40,
         attack: 4,
-        desense: 4
+        defense: 4
     }
 }
 
@@ -49,7 +49,7 @@ const createBigMonster = () => {
         life: 120,
         maxLife: 120,
         attack: 16,
-        desense: 6
+        defense: 6
     }
 }
 
@@ -84,7 +84,7 @@ const stage = {
 
     doAttack(attacking, attacked) {
         if( attacking.life <= 0 || attacked.life <= 0 ) {
-            console.log('Alguém tá morto, não pode atacar.');
+            log.addMessage('Alguém tá morto, não pode atacar.');
             return;
         }
 
@@ -97,11 +97,28 @@ const stage = {
         if( actualAttack > actualDefense ) {
             attacked.life -= actualAttack;
             attacked.life = attacked.life < 0 ? 0 : attacked.life;
-            console.log(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`);
+            log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`);
         }else{
-            console.log(`${attacked.name} conseguiu defender...`);
+            log.addMessage(`${attacked.name} conseguiu defender...`);
         }
 
         this.update();
     }
+}
+
+const log = {
+    list: [],
+    addMessage(msg) {
+        this.list.push(msg);
+        this.render();
+    },
+    render() {
+        const logEL = document.querySelector('.log');
+        logEL.innerHTML = '';
+
+        for(let i in this.list){
+            logEL.innerHTML += `<li>${this.list[i]} </li>`;
+        }
+    }
+
 }
